@@ -1,15 +1,15 @@
-# ErrorHandling Smart Contract
-This is solidity project "ErrorHandling".
+# Functions and Errors Smart Contract
+This is the solidity project "ErrorHandling".
 
 ## Description
-This Solidity smart contract demonstrates basic error handling mechanisms using require, assert, and revert. It includes functions setvalue for setting a value and ownerFunction for assert() and revertFunction for revert().
+This Solidity smart contract demonstrates basic error-handling mechanisms using require, assert, and revert. It includes functions setvalue for setting a value, ownerFunction for assert() and revertFunction for revert().
 
 ## Getting Started
 
 ### Executing Program
 To run the program use Remix IDE, an Online Platform https://remix.ethereum.org/.
 
-Once you are on the Remix website, create a new file and save the file with a .sol extension (like ErrorHandling.sol). Copy and paste the code into the file:
+Once on the Remix website, create a new file and save the file with a .sol extension (like ErrorHandling.sol). Copy and paste the code into the file:
 ```javascript
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.26;
