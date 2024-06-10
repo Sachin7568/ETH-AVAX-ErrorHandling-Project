@@ -14,32 +14,33 @@ Once on the Remix website, create a new file and save the file with a .sol exten
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.26;
 
-contract ErrorHandlingExample {
+contract RealWorldProblemSolver {
     address public owner;
+    uint public totalDonations;
 
     constructor() {
         owner = msg.sender;
     }
 
-    function useSuperPowers() public view {
-        require(msg.sender == owner, "Only the owner can use superpowers");
+    function donate(uint amount) public {
+        require(amount > 0, "Donation amount must be positive");
+        totalDonations += amount;
     }
 
-    function internalCheck() public pure returns (bool) {
+    function withdrawDonations() public {
+        require(msg.sender == owner, "Only the owner can withdraw");
+        require(totalDonations > 0, "No donations available");
+        payable(owner).transfer(totalDonations);
+        totalDonations = 0;
+    }
+
+    function performInternalCheck() public pure returns (bool) {
         uint256 x = 10;
         uint256 y = 5;
         assert(x > y);
         return true;
     }
-
-    function customRevertExample() public pure {
-        bool condition = false;
-        if (condition) {
-            revert("Custom revert reason");
-        }
-    }
 }
-
 ```
 Compile the code and then deploy it
 
