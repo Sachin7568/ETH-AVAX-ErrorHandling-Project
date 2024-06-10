@@ -12,32 +12,34 @@ To run the program use Remix IDE, an Online Platform https://remix.ethereum.org/
 Once on the Remix website, create a new file and save the file with a .sol extension (like ErrorHandling.sol). Copy and paste the code into the file:
 ```javascript
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.26;
+pragma solidity ^0.8.26;
 
-contract ErrorHandling {
+contract ErrorHandlingExample {
     address public owner;
-    uint public value;
 
     constructor() {
         owner = msg.sender;
     }
-    modifier onlyOwner() {
-        require(msg.sender == owner, "Caller is not the owner");
-        _;
+
+    function useSuperPowers() public view {
+        require(msg.sender == owner, "Only the owner can use superpowers");
     }
-    function setValue(uint _value) public {
-        require(_value > 0, "Value must be greater than 0");
-        value = _value;
+
+    function internalCheck() public pure returns (bool) {
+        uint256 x = 10;
+        uint256 y = 5;
+        assert(x > y);
+        return true;
     }
-    function ownerFunction() public view onlyOwner {
-        assert(owner != address(0));
-    }
-    function revertFunction(uint _value) public pure {
-        if (_value == 0) {
-            revert("Value cannot be zero");
+
+    function customRevertExample() public pure {
+        bool condition = false;
+        if (condition) {
+            revert("Custom revert reason");
         }
     }
 }
+
 ```
 Compile the code and then deploy it
 
